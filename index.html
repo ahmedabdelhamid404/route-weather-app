@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <!-- Weather App Icon -->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <!-- Google Fonts Link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome Link -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- BootStrap Link -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- SweetLibrary Alert -->
+    <link rel="stylesheet" href="css/sweetalert2.min.css" />
+    <!-- SweetLibaray Alert Theme -->
+    <link rel="stylesheet" href="css/borderless.min.css" />
+    <!-- MyStyle Link -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR SECTION -->
+    <nav class="navbar navbar-expand-lg bg-dark text-center">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-container d-flex align-items-center">
+            <picture class="me-3">
+              <img src="images/logo.png" alt="Website Logo" />
+            </picture>
+            <div class="logo-text">
+              <h1 class="mb-0">Weather</h1>
+              <p class="mb-0">tagline goes here</p>
+            </div>
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="bars-icon fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2 mt-lg-0 mt-4">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Live cameras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Photos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- INPUT SEARCH FORM SECTION -->
+    <section class="input-form">
+      <div class="container py-5">
+        <div class="form-search-container position-relative mb-5">
+          <input
+            type="text"
+            id="search"
+            class="form-control text-white"
+            placeholder="Find your location...."
+          />
+          <button
+            id="findMe"
+            class="form-search-button btn rounded rounded-pill px-4 py-2"
+          >
+            Find Me
+          </button>
+          <div
+            class="searchResults bg-white position-absolute start-0 end-0 top-100 rounded rounded-4 z-3 overflow-hidden d-none"
+          ></div>
+        </div>
+        <div class="languageButtons text-center">
+          <button data-bs-lang="en" class="btn btn-info">En</button>
+          <button data-bs-lang="ar" class="btn btn-info">Ar</button>
+        </div>
+      </div>
+    </section>
+    <!-- FORECAST CARD DISPLAY -->
+    <section class="forecast-result">
+      <div class="container position-relative">
+        <div class="row rounded rounded-3 overflow-hidden g-0">
+          <div class="col-md-4 text-center">
+            <div
+              class="date-info d-flex flex-wrap justify-content-between px-4 py-2 text-color"
+            >
+              <p id="dayName" class="m-0"></p>
+              <p class="m-0">
+                <span id="dayNumber" class="me-2"></span
+                ><span id="monthName"></span>
+              </p>
+            </div>
+            <div class="forecast-body px-2 py-5">
+              <div
+                class="degree-info d-flex flex-wrap justify-content-around align-items-center"
+              >
+                <div class="degree text-color">
+                  <div class="text-white fs-1">
+                    <span id="degree"></span> <sup>o</sup> C
+                  </div>
+                  <div
+                    class="weather-status d-flex flex-wrap justify-content-around align-items-center"
+                  >
+                    <img id="imageStatus" class="w-50" src="" alt="status" />
+                    <span id="weatherStatus" class="status mt-2"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="location my-4 fs-6 text-info">
+                <i class="fa-solid fa-location-dot me-2"></i>
+                <span id="region"></span><br /><span id="country"></span>
+              </div>
+              <div class="climate-info d-flex flex-wrap justify-content-around">
+                <div class="humidty text-center">
+                  <img class="w-20px mb-1" src="images/Humidity.png" alt="" />
+                  <div class="text-color"></div>
+                </div>
+                <div class="wind-speed">
+                  <img class="w-20px mb-1" src="images/Wind.png" alt="" />
+                  <div class="text-color"></div>
+                </div>
+                <div class="compass">
+                  <img class="w-20px mb-1" src="images/Compass.png" alt="" />
+                  <div class="text-color"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 second-item text-center">
+            <div class="date-info text-color py-2">
+              <p id="dayName1" class="m-0">Thursday</p>
+            </div>
+            <div class="forecast-body p-3 d-flex flex-column">
+              <div
+                class="degree-info d-flex flex-wrap justify-content-around align-items-center mb-3"
+              >
+                <div class="weather-status">
+                  <img class="w-icons mb-2" src="images/hot.png" alt="sunny" />
+                  <div class="text-color fs-info">
+                    Max: <span id="max-1" class="text-white"></span>
+                    <sup>o</sup> C
+                  </div>
+                </div>
+                <div class="weather-status">
+                  <img class="w-icons mb-2" src="images/cold.png" alt="sunny" />
+                  <div class="text-color fs-info">
+                    Min: <span id="min-1" class="text-white"></span>
+                    <sup>o</sup> C
+                  </div>
+                </div>
+              </div>
+              <div class="weather-status">
+                <img class="w-icons" src="images/average.png" alt="sunny" />
+                <div class="text-color fs-info">
+                  Average: <span id="avg-1" class="text-white"></span>
+                  <sup>o</sup> C
+                </div>
+              </div>
+              <span id="dayWeatherStatus1" class="status text-color"></span>
+              <div
+                class="sunrise-sunset my-4 fs-6 text-color d-flex flex-wrap justify-content-around align-items-center gap-3"
+              >
+                <div class="sunrise">
+                  <img
+                    class="w-icons"
+                    src="images/sunrise_3920688.png"
+                    alt="sunrise"
+                  />
+                  <div class="info fs-info">
+                    <span
+                      >Sunrise at: <span id="sunrise1" class="text-white"></span
+                    ></span>
+                  </div>
+                </div>
+                <div class="sunset">
+                  <img
+                    class="w-icons"
+                    src="images/sunset_3920799.png"
+                    alt="sunrise"
+                  />
+                  <div class="info fs-info">
+                    <span
+                      >Sunset at: <span id="sunset1" class="text-white"></span
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="date-info text-color py-2">
+              <p id="dayName2" class="m-0">Thursday</p>
+            </div>
+            <div class="forecast-body p-3 d-flex flex-column">
+              <div
+                class="degree-info d-flex flex-wrap justify-content-around align-items-center mb-3"
+              >
+                <div class="weather-status">
+                  <img class="w-icons mb-2" src="images/hot.png" alt="sunny" />
+                  <div class="text-color fs-info">
+                    Max: <span id="max-2" class="text-white"></span>
+                    <sup>o</sup> C
+                  </div>
+                </div>
+                <div class="weather-status">
+                  <img class="w-icons mb-2" src="images/cold.png" alt="sunny" />
+                  <div class="text-color fs-info">
+                    Min: <span id="min-2" class="text-white"></span>
+                    <sup>o</sup> C
+                  </div>
+                </div>
+              </div>
+              <div class="weather-status">
+                <img class="w-icons" src="images/average.png" alt="sunny" />
+                <div class="text-color fs-info">
+                  Average: <span id="avg-2" class="text-white"></span>
+                  <sup>o</sup> C
+                </div>
+              </div>
+              <span id="dayWeatherStatus2" class="status text-color"></span>
+              <div
+                class="sunrise-sunset my-4 fs-6 text-color d-flex flex-wrap justify-content-around align-items-center gap-3"
+              >
+                <div class="sunrise">
+                  <img
+                    class="w-icons"
+                    src="images/sunrise_3920688.png"
+                    alt="sunrise"
+                  />
+                  <div class="info fs-info">
+                    <span
+                      >Sunrise at: <span id="sunrise2" class="text-white"></span
+                    ></span>
+                  </div>
+                </div>
+                <div class="sunset">
+                  <img
+                    class="w-icons"
+                    src="images/sunset_3920799.png"
+                    alt="sunrise"
+                  />
+                  <div class="info fs-info">
+                    <span
+                      >Sunset at: <span id="sunset2" class="text-white"></span
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FOOTER SECTION -->
+    <section class="footer">
+      <div class="container py-5">
+        <div class="footer-content row mb-4">
+          <div class="form-search-container position-relative col-md-8 g-0">
+            <input
+              type="text"
+              id="search"
+              class="form-control text-white"
+              placeholder="Enter Email To Subscribe...."
+            />
+            <button
+              class="form-search-button btn rounded rounded-pill px-4 py-2"
+            >
+              Subscribe
+            </button>
+          </div>
+          <div class="social-links col-md-4 text-md-end mt-md-0 mt-3">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-google-plus"></i>
+            <i class="fa-brands fa-pinterest-p"></i>
+          </div>
+        </div>
+        <p>
+          Copyright 2014 Company name. Designed by Themezy. All rights reserved
+        </p>
+      </div>
+    </section>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
