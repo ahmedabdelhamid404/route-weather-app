@@ -74,6 +74,7 @@ async function weatherAPIByRequest(
     `https://api.weatherapi.com/v1/${requiredData}.json?key=7d77b96c972b4d119a3151101212704&q=${latitude},${longitude}&days=3&lang=${language}`
   );
   response = await getWeatherData.json();
+  console.log(response);
   displayForecast();
 }
 
@@ -91,11 +92,22 @@ function displayForecast() {
   const nextTime = new Date(response.forecast.forecastday[1].date);
   const followingTime = new Date(response.forecast.forecastday[2].date);
   const currentDay = days[time.getDay()];
+  const currentHour = time.getHours();
+  const currentMinutes = time.getMinutes();
+  let timePmOrAm;
+  if (currentHour > 12) {
+    timePmOrAm = "PM";
+  } else {
+    timePmOrAm = "AM";
+  }
   const nextDay = days[nextTime.getDay()];
   const followingDay = days[followingTime.getDay()];
   const dayNumber = time.getDate();
   const monthName = months[time.getMonth()];
   document.getElementById("dayName").innerHTML = currentDay;
+  document.getElementById("hourDisplay").innerHTML = `${
+    currentHour - 12
+  }:${currentMinutes} ${timePmOrAm}`;
   document.getElementById("dayNumber").innerHTML = dayNumber;
   document.getElementById("monthName").innerHTML = monthName;
   document.getElementById("dayName1").innerHTML = nextDay;
