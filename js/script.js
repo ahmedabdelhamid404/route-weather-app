@@ -93,7 +93,7 @@ function displayForecast() {
   const currentDay = days[time.getDay()];
   const nextDay = days[nextTime.getDay()];
   const followingDay = days[followingTime.getDay()];
-  const dayNumber = time.getDay();
+  const dayNumber = time.getDate();
   const monthName = months[time.getMonth()];
   document.getElementById("dayName").innerHTML = currentDay;
   document.getElementById("dayNumber").innerHTML = dayNumber;
@@ -141,7 +141,8 @@ function getYourLocation() {
         showConfirmButton: false,
         timer: 3000,
         icon: "warning",
-        title: "Allow Weather App To Access Location To Get Your Cuurent Location Forecast",
+        title:
+          "Allow Weather App To Access Location To Get Your Cuurent Location Forecast",
       });
     }
   );
@@ -190,7 +191,8 @@ findMe.addEventListener("click", function () {
         showConfirmButton: false,
         timer: 3000,
         icon: "warning",
-        title: "Allow Weather App To Access Location To Get Your Cuurent Location Forecast",
+        title:
+          "Allow Weather App To Access Location To Get Your Cuurent Location Forecast",
       });
     }
   );
