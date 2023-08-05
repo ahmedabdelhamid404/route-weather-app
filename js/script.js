@@ -74,7 +74,6 @@ async function weatherAPIByRequest(
     `https://api.weatherapi.com/v1/${requiredData}.json?key=7d77b96c972b4d119a3151101212704&q=${latitude},${longitude}&days=3&lang=${language}`
   );
   response = await getWeatherData.json();
-  console.log(response);
   displayForecast();
 }
 
