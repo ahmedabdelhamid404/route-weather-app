@@ -91,11 +91,12 @@ function displayForecast() {
   const nextTime = new Date(response.forecast.forecastday[1].date);
   const followingTime = new Date(response.forecast.forecastday[2].date);
   const currentDay = days[time.getDay()];
-  const currentHour = time.getHours();
+  let currentHour = time.getHours();
   const currentMinutes = time.getMinutes();
   let timePmOrAm;
   if (currentHour > 12) {
     timePmOrAm = "PM";
+    currentHour = currentHour - 12;
   } else {
     timePmOrAm = "AM";
   }
@@ -104,9 +105,9 @@ function displayForecast() {
   const dayNumber = time.getDate();
   const monthName = months[time.getMonth()];
   document.getElementById("dayName").innerHTML = currentDay;
-  document.getElementById("hourDisplay").innerHTML = `${
-    currentHour - 12
-  }:${currentMinutes} ${timePmOrAm}`;
+  document.getElementById(
+    "hourDisplay"
+  ).innerHTML = `${currentHour}:${currentMinutes} ${timePmOrAm}`;
   document.getElementById("dayNumber").innerHTML = dayNumber;
   document.getElementById("monthName").innerHTML = monthName;
   document.getElementById("dayName1").innerHTML = nextDay;
